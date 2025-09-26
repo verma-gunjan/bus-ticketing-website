@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { buses } from "../mockData/available_buses";
 import { useQuery } from "../custom_hooks/useQuery";
@@ -38,7 +38,7 @@ const BusDetails = () => {
   };
 
   const handleBookClick = (busId) => {
-    setExpandedBusId(expandedBusId === busId ? null : busId); // toggle panel
+    setExpandedBusId(expandedBusId === busId ? null : busId);
   };
 
   const handleUserDetails = (bus) => {
@@ -48,12 +48,31 @@ const BusDetails = () => {
       return;
     }
   
+    const bookingData = {
+      bus,
+      seats: seatsForBus,
+      from,
+      to,
+      date,
+    };
+  
+    // Save to localStorage
+    localStorage.setItem("bookingData", JSON.stringify(bookingData));
+  
     console.log("Bus:", bus);
     console.log("Selected Seats:", seatsForBus);
   
-    // For example, navigate to user details / payment page
-    navigate("/user-details", { state: { bus, seats: seatsForBus } });
-  };  
+    navigate("/user-details", { state: bookingData });
+  };
+  
+  useEffect(() => {
+    const savedBooking = localStorage.getItem("bookingData");
+    if (savedBooking) {
+      const { bus, seats } = JSON.parse(savedBooking);
+      setSelectedSeats({ [bus.id]: seats });
+      setExpandedBusId(bus.id);
+    }
+  }, []);
 
   return (
     <section>
@@ -66,7 +85,7 @@ const BusDetails = () => {
         <div className="text-white text-xs font-medium">{date}</div>  
       </div>
 
-      <div className="space-y-4 mt-4">
+      <div className="space-y-4 mt-4 mx-auto max-w-7xl px-6 lg:px-8">
         {busList.map((bus) => (
           <div key={bus.id} className="bg-gray-800 text-white rounded-lg p-4">
             <div className="flex justify-between items-center">
