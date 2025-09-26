@@ -23,7 +23,6 @@ const Invoice = () => {
 
   return (
     <section className="max-w-3xl mx-auto bg-white shadow-lg rounded-lg p-8 mt-10">
-      {/* Header */}
       <div className="text-center border-b pb-4 mb-6">
         <h1 className="text-2xl font-bold text-yellow-600">Bus Ticket Invoice</h1>
         <p className="text-gray-500 text-sm">Booking Confirmation</p>
@@ -88,7 +87,6 @@ const Invoice = () => {
         </div>
       </div>
 
-      {/* Footer */}
       <div className="text-center text-gray-500 text-xs border-t pt-4">
         <p>Thank you for booking with us</p>
         <p>Safe travels! <i className="fas fa-bus"></i></p>
