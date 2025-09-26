@@ -1,7 +1,9 @@
 import React from "react";
 import city_image from "../assets/city_image.jpg";
 import bus_image from "../assets/bus_image.png";
+import "react-datepicker/dist/react-datepicker.css";
 import "../styles/homepage.css";
+import FindRoute from "./shared_components/FindRoute";
 
 const Home = () => {
   return (
@@ -32,24 +34,7 @@ const Home = () => {
       </div>
     </section>
     <section className="relative flex justify-center -mt-20 px-4 z-20">
-      <div className="bg-white rounded-xl shadow-lg w-full max-w-5xl p-6 flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4">
-        <h1 className="text-2xl md:text-4xl font-bold text-gray-800">
-          Find My Route
-        </h1>
-        <input
-          type="text"
-          placeholder="From"
-          className="border border-gray-300 rounded-lg p-2 flex-1"
-        />
-        <input
-          type="text"
-          placeholder="To"
-          className="border border-gray-300 rounded-lg p-2 flex-1"
-        />
-        <button className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-400 transition">
-          Let's Go
-        </button>
-      </div>
+      <FindRoute/>
     </section>
     <section className="bg-white py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
