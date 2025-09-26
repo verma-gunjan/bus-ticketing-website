@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const UserDetails = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+  const [showSuccess, setShowSuccess] = useState(false);
 
   let { bus, seats, from, to, date } = location.state || {};
 
@@ -65,7 +67,12 @@ const UserDetails = () => {
 
     localStorage.setItem("finalBooking", JSON.stringify(bookingSummary));
 
-    alert("Booking Confirmed!");
+    setShowSuccess(true);
+
+    // Redirect after 2 seconds
+    setTimeout(() => {
+      navigate("/invoice");
+    }, 2000);
   };
 
   return (
@@ -213,6 +220,15 @@ const UserDetails = () => {
         >
           Proceed To Pay
         </button>
+        {/* Success Popup */}
+        {showSuccess && (
+          <div className="fixed inset-0 flex items-center justify-center bg-opacity-50">
+            <div className="bg-white p-6 rounded shadow-lg text-center">
+              <h2 className="text-xl font-bold text-green-600 mb-2">Payment Successful 🎉</h2>
+              <p className="text-gray-600">Redirecting to your invoice...</p>
+            </div>
+          </div>
+        )}
       </form>
     </section>
   );

@@ -7,6 +7,7 @@ import BusDetails from './components/BusDetails.jsx'
 // import userDetails from "./components/userDetails.jsx"
 import UserDetails from "./components/UserDetails.jsx"
 import './index.css';
+import Invoice from './components/Invoice.jsx';
 
 const appRouter = createBrowserRouter([
   {
@@ -15,7 +16,8 @@ const appRouter = createBrowserRouter([
     children: [
       { path: "/", element: <Home /> },
       {path: "/bus", element: <BusDetails/>},
-      {path:"/user-details", element: <UserDetails/> }
+      {path:"/user-details", element: <UserDetails/> },
+      {path: "/invoice",  element: <Invoice/>}
     ]
   }
 ]);
