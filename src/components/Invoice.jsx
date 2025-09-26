@@ -7,6 +7,10 @@ const Invoice = () => {
     const savedBooking = localStorage.getItem("finalBooking");
     if (savedBooking) {
       setBooking(JSON.parse(savedBooking));
+  
+      // Clear localStorage after setting state
+      localStorage.removeItem("finalBooking");
+      localStorage.removeItem("bookingData");
     }
   }, []);
 
