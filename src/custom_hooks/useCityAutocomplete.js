@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { cities } from "../mockData/city";
 
-export function useCityAutocomplete() {
+export function useCityAutocomplete(onSelect) {
   const [query, setQuery] = useState("");
   const [filteredCities, setFilteredCities] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
@@ -32,6 +32,7 @@ export function useCityAutocomplete() {
   const handleSelectCity = (cityName) => {
     setQuery(cityName);
     setShowSuggestions(false);
+    if (onSelect) onSelect(cityName);
   };
 
   return {
