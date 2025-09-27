@@ -4,8 +4,10 @@ import bus_image from "../assets/bus_image.png";
 import "react-datepicker/dist/react-datepicker.css";
 import "../styles/homepage.css";
 import FindRoute from "./shared_components/FindRoute";
+import {useNavigate} from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
   return (
     <>
     <section className="relative h-screen w-full">
@@ -20,7 +22,7 @@ const Home = () => {
           <p className="text-lg sm:text-xl mb-6">
             Book your bus tickets easily and travel safely
           </p>
-          <button className="bg-yellow-500 text-black px-6 py-3 rounded-lg font-semibold hover:bg-yellow-400 transition">
+          <button className="bg-yellow-500 text-black px-6 py-3 rounded-lg font-semibold hover:bg-yellow-400 transition" onClick={() => navigate("/bus")}>
             Book Now
           </button>
         </div>

@@ -98,5 +98,25 @@ export const cities = [
     "shortName": "Bilaspur Kalan",
     "searchTags": ["Bilaspur Haryana"],
     "isPopular": false
+  },
+  {
+    "_id": "city11",
+    "name": "Agra, Uttar Pradesh",
+    "value": "Agra",
+    "state": "Uttar Pradesh",
+    "cityName": "Agra",
+    "shortName": "Agra",
+    "searchTags": ["Agra"],
+    "isPopular": false
+  },
+  {
+    "_id": "city11",
+    "name": "Udaipur, Rajasthan",
+    "value": "Udaipur",
+    "state": "Rajasthan",
+    "cityName": "Udaipur",
+    "shortName": "Udaipur",
+    "searchTags": ["Udaipur"],
+    "isPopular": false
   }
 ]
