@@ -1,7 +1,6 @@
-// components/CityInput.js
 import React from "react";
 import { useCityAutocomplete } from "../custom_hooks/useCityAutocomplete";
-export default function CityInput({ placeholder, onSelect, value }) {
+export default function CityInput({ placeholder, onSelect }) {
     const {
       query,
       filteredCities,
@@ -14,10 +13,11 @@ export default function CityInput({ placeholder, onSelect, value }) {
       <div className="relative w-full flex-1">
         <input
           type="text"
-          value={value || query}
+          value={query}
           placeholder={placeholder}
           onChange={handleChange}
           className="border border-gray-300 rounded-lg p-3 w-full focus:outline-none focus:ring-2 focus:ring-red-400"
+          required
         />
   
         {showSuggestions && filteredCities.length > 0 && (

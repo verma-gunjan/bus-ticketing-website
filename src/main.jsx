@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from './App.jsx';
 import Home from './components/Home.jsx';
-import BusDetails from './components/BusDetails.jsx'
-// import userDetails from "./components/userDetails.jsx"
-import UserDetails from "./components/UserDetails.jsx"
 import './index.css';
-import Invoice from './components/Invoice.jsx';
+
+const UserDetails = lazy(() => import('./components/userDetails.jsx'));
+const BusDetails = lazy(() => import('./components/BusDetails.jsx'));
+const Invoice = lazy(() => import('./components/Invoice.jsx'));
 
 const appRouter = createBrowserRouter([
   {
@@ -15,11 +15,32 @@ const appRouter = createBrowserRouter([
     element: <App />,
     children: [
       { path: "/", element: <Home /> },
-      {path: "/bus", element: <BusDetails/>},
-      {path:"/user-details", element: <UserDetails/> },
-      {path: "/invoice",  element: <Invoice/>}
-    ]
-  }
+      {
+        path: "/bus",
+        element: (
+          <Suspense fallback={<div>Loading Bus Details...</div>}>
+            <BusDetails />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/user-details",
+        element: (
+          <Suspense fallback={<div>Loading User Details...</div>}>
+            <UserDetails />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/invoice",
+        element: (
+          <Suspense fallback={<div>Loading Invoice...</div>}>
+            <Invoice />
+          </Suspense>
+        ),
+      },
+    ],
+  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
