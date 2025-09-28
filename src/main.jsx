@@ -5,7 +5,7 @@ import App from './App.jsx';
 import Home from './components/Home.jsx';
 import './index.css';
 
-const UserDetails = lazy(() => import('./components/userDetails.jsx'));
+const UserDetails = lazy(() => import('./components/UserDetails.jsx'));
 const BusDetails = lazy(() => import('./components/BusDetails.jsx'));
 const Invoice = lazy(() => import('./components/Invoice.jsx'));
 
