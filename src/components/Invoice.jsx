@@ -2,11 +2,17 @@ import React, { useEffect, useState } from "react";
 
 const Invoice = () => {
   const [booking, setBooking] = useState(null);
+  const [ticketId, setTicketId] = useState("");
+
 
   useEffect(() => {
     const savedBooking = localStorage.getItem("finalBooking");
     if (savedBooking) {
       setBooking(JSON.parse(savedBooking));
+
+      // Generate random ticket ID (e.g. "TKT-AB1234")
+      const randomId = "TKT-" + Math.random().toString(36).substring(2, 8).toUpperCase();
+      setTicketId(randomId);
   
       // Clear localStorage after setting state
       localStorage.removeItem("finalBooking");
@@ -30,6 +36,7 @@ const Invoice = () => {
       <div className="text-center border-b pb-4 mb-6">
         <h1 className="text-2xl font-bold text-yellow-600">Bus Ticket Invoice</h1>
         <p className="text-gray-500 text-sm">Booking Confirmation</p>
+        {ticketId && <p className="text-gray-700 text-sm mt-1">Ticket ID: <strong>{ticketId}</strong></p>}
       </div>
 
       {/* Bus Information */}
