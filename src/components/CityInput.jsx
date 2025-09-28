@@ -1,13 +1,13 @@
 import React from "react";
 import { useCityAutocomplete } from "../custom_hooks/useCityAutocomplete";
-export default function CityInput({ placeholder, onSelect }) {
+export default function CityInput({ placeholder, onSelect, value }) {
     const {
       query,
       filteredCities,
       showSuggestions,
       handleChange,
       handleSelectCity,
-    } = useCityAutocomplete(onSelect);
+    } = useCityAutocomplete(onSelect, value);
   
     return (
       <div className="relative w-full flex-1">

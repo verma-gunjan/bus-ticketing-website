@@ -10,12 +10,11 @@ const Home = () => {
   const navigate = useNavigate();
   return (
     <>
-    <section className="relative h-screen w-full">
+    <section className="relative h-screen/2 w-full">
       <img src={city_image} alt="City" className="absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/20" />
-
-      <div className="relative z-10 flex flex-col md:flex-row h-full items-center justify-center md:justify-between px-8 lg:px-20 text-center md:text-left">
-        <div className="text-white max-w-lg">
+      <div className="relative z-10 flex flex-col md:flex-row h-full items-center justify-center md:justify-between text-center md:text-left p-y-10 max-w-7xl mx-auto lg:px-8">
+        <div className="text-white max-w-lg py-24">
           <h1 className="text-5xl lg:text-6xl font-extrabold leading-tight mb-4">
             Welcome to City Travels
           </h1>
