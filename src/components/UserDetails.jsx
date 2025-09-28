@@ -76,7 +76,7 @@ const UserDetails = () => {
   };
 
   return (
-    <section className="py-4 mx-auto px-8 lg:px-20">
+      <section className="py-4 mx-auto px-4 lg:px-20 lg:py-8 max-w-3xl mx-auto bg-gray-50">
       {/* Booking Summary */}
       <div className="bg-white shadow-md rounded-lg px-6 border border-gray-200">
         <div className="flex justify-between items-center">
@@ -113,7 +113,7 @@ const UserDetails = () => {
           {passengers.map((p, index) => (
             <div
               key={p.seatId}
-              className="flex items-center space-x-3 bg-gray-100 p-4 rounded-lg"
+              className="flex items-center space-x-3 bg-gray-100 p-4 rounded-lg flex-wrap gap-2"
             >
               <div className="text-sm font-medium text-gray-700 w-10">{p.seatId}</div>
           

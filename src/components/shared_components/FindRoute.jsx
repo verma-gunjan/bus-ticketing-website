@@ -3,12 +3,22 @@ import CityInput from "../CityInput";
 import DatePicker from "react-datepicker";
 import { format } from "date-fns";
 import { Navigate, useNavigate } from "react-router-dom";
+import { useQuery } from "../../custom_hooks/useQuery";
 
 const FindRoute = () =>{
-  const [startDate, setStartDate] = useState(null);
-  const [fromCity, setFromCity] = useState("");
-  const [toCity, setToCity] = useState("");
-  const formattedDate = startDate ? format(startDate, "yyyy-MM-dd") : "";
+  const query = useQuery();
+  const from = query.get('from');
+  const to = query.get('to');
+  const date = query.get('date');
+  const [startDate, setStartDate] = useState(date ? new Date(date) : null);
+  const [fromCity, setFromCity] = useState(from || "");
+  const [toCity, setToCity] = useState(to || "");
+  const formattedDate = startDate ? format(startDate, "yyyy-MM-dd") : date || "";
+
+  // const [startDate, setStartDate] = useState(null);
+  // const [fromCity, setFromCity] = useState("");
+  // const [toCity, setToCity] = useState("");
+  // const formattedDate = startDate ? format(startDate, "yyyy-MM-dd") : "";
   const navigate = useNavigate();
 
   return (

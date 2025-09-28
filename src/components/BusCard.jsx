@@ -12,6 +12,11 @@ const BusCard = React.memo(
     from,
     to,
   }) => {
+    // Get seats selected for this bus
+    const seatsForBus = selectedSeats[bus.id] || [];
+
+    // Calculate price dynamically
+    const totalFare = seatsForBus.length * bus.discountFare;
     return (
       <div className="bg-white rounded-2xl shadow-md p-5 mb-4 flex justify-between items-center hover:shadow-lg transition">
         {/* Left Section */}
@@ -36,7 +41,7 @@ const BusCard = React.memo(
         {/* Right Section */}
         <div className="flex flex-col items-end space-y-3">
           <span className="text-yellow-500 font-bold text-lg">
-            ₹{bus.discountFare.toLocaleString()}
+            ₹{totalFare > 0 ? totalFare.toLocaleString() : bus.discountFare.toLocaleString()}
           </span>
     
           <button
@@ -57,7 +62,6 @@ const BusCard = React.memo(
         )}
       </div>
     );
-    
   }
 );
 
