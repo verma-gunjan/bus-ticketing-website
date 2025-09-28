@@ -10,7 +10,7 @@ A modern, responsive Bus Ticketing Website built with **React** and **Tailwind C
 
 ## Live Demo
 
-[Live Demo](https://your-deployment-url.example)
+[Live Demo](bus-ticketing-website.vercel.app)
 
 ---
 
